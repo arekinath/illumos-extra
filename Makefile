@@ -54,6 +54,7 @@ SUBDIRS = \
 	openlldp \
 	openssl \
 	openssl1x \
+	openssh \
 	pbzip2 \
 	perl \
 	rsync \
@@ -141,7 +142,7 @@ install: $(SUBDIRS) gcc4 binutils
 
 install_strap: $(STRAP_SUBDIRS) gcc4 binutils
 
-clean: 
+clean:
 	-for dir in $(SUBDIRS) gcc4 binutils; \
 	    do (cd $$dir; $(MAKE) DESTDIR=$(DESTDIR) clean); done
 	-rm -rf proto

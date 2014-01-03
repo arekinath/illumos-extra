@@ -1,0 +1,21 @@
+--- openssh/configure        2014-01-03 06:54:39.154654194 +0000
++++ openssh/configure     2014-01-03 06:56:09.955235943 +0000
+@@ -11178,7 +11178,7 @@
+
+ fi
+
+-LIBS="-lcrypto $LIBS"
++LIBS="-lsunw_crypto $LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+
+@@ -11688,7 +11688,7 @@
+   return 0;
+ }
+ _ACEOF
+-for ac_lib in '' crypto; do
++for ac_lib in '' sunw_crypto; do
+   if test -z "$ac_lib"; then
+     ac_res="none required"
+   else
+

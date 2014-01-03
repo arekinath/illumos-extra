@@ -1,0 +1,13 @@
+diff -ru openssh-6.4p1-32.dist/Makefile openssh-6.4p1-32/Makefile
+--- openssh-6.4p1-32.dist/Makefile     2014-01-03 07:44:39.553186927 +0000
++++ openssh-6.4p1-32/Makefile  2014-01-03 07:46:47.564401362 +0000
+@@ -205,7 +205,8 @@
+       $(CC) $(CFLAGS) $(CPPFLAGS) -o umac128.o -c $(srcdir)/umac.c \
+           -DUMAC_OUTPUT_LEN=16 -Dumac_new=umac128_new \
+           -Dumac_update=umac128_update -Dumac_final=umac128_final \
+-          -Dumac_delete=umac128_delete
++          -Dumac_delete=umac128_delete -Dumac_ctx=umac128_ctx \
++          -Duhash_ctx=uhash128_ctx -Dnh_ctx=nh128_ctx
+ 
+ clean:        regressclean
+       rm -f *.o *.a $(TARGETS) logintest config.cache config.log

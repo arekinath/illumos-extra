@@ -488,6 +488,37 @@ d etc/openssl 0755 root sys
 d etc/openssl/certs 0755 root sys
 f etc/openssl/openssl.cnf 0644 root sys
 d etc/openssl/private 0700 root sys
+# openssh
+d usr/lib/ssh 0755 root bin
+f usr/lib/ssh/ssh-pkcs11-helper 0555 root bin
+f usr/lib/ssh/ssh-keysign 4511 root bin
+f usr/lib/ssh/sftp-server 0555 root bin
+f usr/lib/ssh/sshd 0555 root bin
+s usr/bin/slogin=./ssh
+f usr/bin/ssh 0555 root bin
+f usr/bin/ssh-add 0555 root bin
+f usr/bin/ssh-agent 0555 root bin
+f usr/bin/ssh-keygen 0555 root bin
+f usr/bin/ssh-keyscan 0555 root bin
+d etc/ssh 0755 root sys
+f etc/ssh/moduli 0644 root sys
+f etc/ssh/ssh_config 0644 root sys
+f etc/ssh/sshd_config 0644 root sys
+d usr/share/man/man4 0755 root bin
+d usr/share/man/man1m 0755 root bin
+f usr/share/man/man4/ssh_config.4 0644 root bin
+f usr/share/man/man4/sshd_config.4 0644 root bin
+f usr/share/man/man1m/sshd.1m 0644 root bin
+f usr/share/man/man1m/ssh-keysign.1m 0644 root bin
+f usr/share/man/man1m/sftp-server.1m 0644 root bin
+f usr/share/man/man1/sftp.1 0644 root bin
+f usr/share/man/man1/ssh.1 0644 root bin
+f usr/share/man/man1/slogin.1 0644 root bin
+f usr/share/man/man1/ssh-agent.1 0644 root bin
+f usr/share/man/man1/ssh-keygen.1 0644 root bin
+f usr/share/man/man1/ssh-add.1 0644 root bin
+f usr/share/man/man1/ssh-keyscan.1 0644 root bin
+f usr/share/man/man1/scp.1 0644 root bin
 # pbzip2
 f usr/bin/pbzip2 0555 root bin
 f usr/share/man/man1/pbzip2.1 0444 root bin

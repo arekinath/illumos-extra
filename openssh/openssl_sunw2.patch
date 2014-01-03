@@ -1,0 +1,150 @@
+--- openssh-6.4p1-32.dist/configure    2014-01-03 07:13:39.653966064 +0000
++++ openssh-6.4p1-32/configure 2014-01-03 07:26:33.383822807 +0000
+@@ -11188,11 +11188,11 @@
+ #ifdef __cplusplus
+ extern "C"
+ #endif
+-char RAND_add ();
++char sunw_RAND_add ();
+ int
+ main ()
+ {
+-return RAND_add ();
++return sunw_RAND_add ();
+   ;
+   return 0;
+ }
+@@ -11338,7 +11338,7 @@
+       if(fd == NULL)
+               exit(1);
+ 
+-      if ((rc = fprintf(fd ,"%x (%s)\n", SSLeay(), SSLeay_version(SSLEAY_VERSION))) <0)
++      if ((rc = fprintf(fd ,"%x (%s)\n", sunw_SSLeay(), sunw_SSLeay_version(SSLEAY_VERSION))) <0)
+               exit(1);
+ 
+       exit(0);
+@@ -11396,7 +11396,7 @@
+ main ()
+ {
+ 
+-      exit(SSLeay() == OPENSSL_VERSION_NUMBER ? 0 : 1);
++      exit(sunw_SSLeay() == OPENSSL_VERSION_NUMBER ? 0 : 1);
+ 
+   ;
+   return 0;
+@@ -11441,7 +11441,7 @@
+ int
+ main ()
+ {
+- SSLeay_add_all_algorithms();
++ sunw_SSLeay_add_all_algorithms();
+   ;
+   return 0;
+ }
+@@ -11465,7 +11465,7 @@
+ int
+ main ()
+ {
+- SSLeay_add_all_algorithms();
++ sunw_SSLeay_add_all_algorithms();
+   ;
+   return 0;
+ }
+@@ -11494,7 +11494,7 @@
+ for ac_func in RSA_generate_key_ex DSA_generate_parameters_ex BN_is_prime_ex RSA_get_default_method HMAC_CTX_init
+ do :
+   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
+-ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
++ac_fn_c_check_func "$LINENO" "sunw_$ac_func" "$as_ac_var"
+ if eval test \"x\$"$as_ac_var"\" = x"yes"; then :
+   cat >>confdefs.h <<_ACEOF
+ #define `$as_echo "HAVE_$ac_func" | $as_tr_cpp` 1
+@@ -11556,7 +11556,7 @@
+ main ()
+ {
+ 
+-      exit(EVP_aes_192_cbc() == NULL || EVP_aes_256_cbc() == NULL);
++      exit(sunw_EVP_aes_192_cbc() == NULL || sunw_EVP_aes_256_cbc() == NULL);
+ 
+   ;
+   return 0;
+@@ -11593,9 +11593,9 @@
+ main ()
+ {
+ 
+-      exit(EVP_aes_128_ctr() == NULL ||
+-          EVP_aes_192_cbc() == NULL ||
+-          EVP_aes_256_cbc() == NULL);
++      exit(sunw_EVP_aes_128_ctr() == NULL ||
++          sunw_EVP_aes_192_cbc() == NULL ||
++          sunw_EVP_aes_256_cbc() == NULL);
+ 
+   ;
+   return 0;
+@@ -11632,13 +11632,13 @@
+ main ()
+ {
+ 
+-      exit(EVP_aes_128_gcm() == NULL ||
+-          EVP_aes_256_gcm() == NULL ||
++      exit(sunw_EVP_aes_128_gcm() == NULL ||
++          sunw_EVP_aes_256_gcm() == NULL ||
+           EVP_CTRL_GCM_SET_IV_FIXED == 0 ||
+           EVP_CTRL_GCM_IV_GEN == 0 ||
+           EVP_CTRL_GCM_SET_TAG == 0 ||
+           EVP_CTRL_GCM_GET_TAG == 0 ||
+-          EVP_CIPHER_CTX_ctrl(NULL, 0, 0, NULL) == 0);
++          sunw_EVP_CIPHER_CTX_ctrl(NULL, 0, 0, NULL) == 0);
+ 
+   ;
+   return 0;
+@@ -11679,11 +11679,11 @@
+ #ifdef __cplusplus
+ extern "C"
+ #endif
+-char EVP_CIPHER_CTX_ctrl ();
++char sunw_EVP_CIPHER_CTX_ctrl ();
+ int
+ main ()
+ {
+-return EVP_CIPHER_CTX_ctrl ();
++return sunw_EVP_CIPHER_CTX_ctrl ();
+   ;
+   return 0;
+ }
+@@ -11735,7 +11735,7 @@
+ main ()
+ {
+ 
+-      if(EVP_DigestUpdate(NULL, NULL,0))
++      if(sunw_EVP_DigestUpdate(NULL, NULL,0))
+               exit(0);
+ 
+   ;
+@@ -11857,7 +11857,7 @@
+ for ac_func in crypt DES_crypt
+ do :
+   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
+-ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
++ac_fn_c_check_func "$LINENO" "sunw_$ac_func" "$as_ac_var"
+ if eval test \"x\$"$as_ac_var"\" = x"yes"; then :
+   cat >>confdefs.h <<_ACEOF
+ #define `$as_echo "HAVE_$ac_func" | $as_tr_cpp` 1
+@@ -11871,7 +11871,7 @@
+ for ac_func in SHA256_Update EVP_sha256
+ do :
+   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
+-ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
++ac_fn_c_check_func "$LINENO" "sunw_$ac_func" "$as_ac_var"
+ if eval test \"x\$"$as_ac_var"\" = x"yes"; then :
+   cat >>confdefs.h <<_ACEOF
+ #define `$as_echo "HAVE_$ac_func" | $as_tr_cpp` 1
+@@ -11911,7 +11911,7 @@
+ {
+ 
+       EC_KEY *e = EC_KEY_new_by_curve_name(NID_secp521r1);
+-      const EVP_MD *m = EVP_sha512(); /* We need this too */
++      const EVP_MD *m = sunw_EVP_sha512(); /* We need this too */
+ 
+   ;
+   return 0;
