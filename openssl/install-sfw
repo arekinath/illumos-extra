@@ -46,7 +46,7 @@ source ../install.subr
 cd $VERDIR
 
 # Remove SSE and MMX from the Capabilities section (x86 only)
-if [[ ${MACH32} = "i86" ]]; then 
+if [[ ${MACH32} = "i86" ]]; then
 	elfedit -e 'cap:hw1 -and -cmp sse2' \
 	    -e 'cap:hw1 -and -cmp mmx' libcrypto.so.${LIBVER}
 fi
@@ -54,7 +54,7 @@ fi
 # Install libraries, for legacy use only
 _install D libcrypto.so.${LIBVER} ${LIBDIR}/libcrypto.so.${LIBVER} 0755
 _install D libssl.so.${LIBVER} ${LIBDIR}/libssl.so.${LIBVER} 0755
-_install L ../../libcrypto.so.${LIBVER} ${USRLIBDIR}/libcrypto.so.${LIBVER}
+_install L ../../lib/libcrypto.so.${LIBVER} ${USRLIBDIR}/libcrypto.so.${LIBVER}
 _install L ../../lib/libssl.so.${LIBVER} ${USRLIBDIR}/libssl.so.${LIBVER}
 
 exit 0
