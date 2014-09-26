@@ -1,0 +1,31 @@
+--- bash-4.1/config.h.in	2009-08-19 13:34:36.000000000 +1000
++++ bash-4.1/config.h.in	2014-09-26 10:28:16.000000000 +1000
+@@ -1107,4 +1107,7 @@
+
+ #include "config-bot.h"
+
++/* Define to disable function import ability, see CVE-2014-6271 */
++#define NO_FUNC_IMPORT 1
++
+ #endif /* _CONFIG_H_ */
+diff -wru bash-4.1/variables.c bash-4.1.patch/variables.c
+--- bash-4.1/variables.c	2009-11-04 05:13:58.000000000 +1000
++++ bash-4.1/variables.c	2014-09-26 10:32:51.000000000 +1000
+@@ -338,6 +338,7 @@
+
+       /* If exported function, define it now.  Don't import functions from
+ 	 the environment in privileged mode. */
++#if !defined(NO_FUNC_IMPORT)
+       if (privmode == 0 && read_but_dont_execute == 0 && STREQN ("() {", string, 4))
+ 	{
+ 	  string_length = strlen (string);
+@@ -366,6 +367,9 @@
+ 	  if (name[char_index - 1] == ')' && name[char_index - 2] == '\0')
+ 	    name[char_index - 2] = '(';		/* ) */
+ 	}
++#else
++      if (0);
++#endif
+ #if defined (ARRAY_VARS)
+ #  if 0
+       /* Array variables may not yet be exported. */
